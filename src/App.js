@@ -25,7 +25,7 @@ const App = () => {
 
     const MyComponentWithWindowSize = windowBrowser(windowView);
 
-    const ColorChangeComponent = ColorChange(ItemComponent, "dark");
+    const ColorChangeComponent = ColorChange(ItemComponent);
 
     return (
         <div>

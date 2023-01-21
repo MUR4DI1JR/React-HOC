@@ -6,17 +6,17 @@ const ColorChange = (WrappedComponent) => {
         constructor(props) {
             super(props);
             this.state = {
-                color: "dark"
+                color: "dark",
             }
         }
 
-        handleChangeColor (color){
-            this.setState({color});
+        handleChangeColor (backColor){
+            this.setState({color: backColor === "dark" ? "light" : "dark"});
         }
 
         render() {
             return (
-                <WrappedComponent {...this.props} color={this.state} changeColor={() => this.handleChangeColor()}/>
+                <WrappedComponent {...this.props} color={this.state} changeColor={(backColor) => this.handleChangeColor(backColor)}/>
             );
         }
 
