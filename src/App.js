@@ -1,43 +1,24 @@
-import React, {createContext, useState} from 'react';
-import ButtonUI from "./utils/ButtonUI";
-import {composeComponent} from "./hoc/composeComponent";
-import CatComponent from "./components/catComponent";
-import MyComponent from "./components/MyComponent";
-import {WithLoading} from "./hoc/withLoading";
-import TypingText from "./utils/typingText";
-import Loader from "./hoc/loader";
-import windowBrowser from "./hoc/windowBrowser";
-import windowView from "./components/windowView";
-import ColorChange from "./hoc/colorChange";
-import ItemComponent from "./components/itemComponent";
+import React, {useState} from 'react';
+import './app.css';
+import Card from "./utils/Card";
+import {CounterContext} from "./contansts/context";
+import CounterComponent from "./components/counterComponent";
 
 const App = () => {
+    const [count, setCount] = useState(0);
 
-    // const ComposedCatComponent = composeComponent(CatComponent);
-    //
-    // const HelloWorldComponent = composeComponent(MyComponent);
-    //
-    // const IsLoadingComponent = WithLoading(MyComponent);
-    // const IsLoadingCatComponent = WithLoading(CatComponent);
+    const increment = () => {
+        setCount(count + 1)
+    }
 
-    const LoadingText = Loader(MyComponent, 3000);
-    const LoadingCatComponent = Loader(CatComponent, 6000);
-
-    const MyComponentWithWindowSize = windowBrowser(windowView);
-
-    const ColorChangeComponent = ColorChange(ItemComponent);
+    const decrement = () => {
+        setCount(count - 1);
+    }
 
     return (
-        <div>
-            <LoadingText/>
-            <LoadingCatComponent/>
-            <MyComponentWithWindowSize/>
-            <ColorChangeComponent/>
-            {/*<ComposedCatComponent/>*/}
-            {/*<HelloWorldComponent/>*/}
-            {/*<IsLoadingComponent/>*/}
-            {/*<IsLoadingCatComponent/>*/}
-        </div>
+        <CounterContext.Provider value={{count, increment, decrement}}>
+            <CounterComponent/>
+        </CounterContext.Provider>
     );
 };
 
