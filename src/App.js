@@ -1,13 +1,11 @@
-import React, {useState, useContext, useEffect, useReducer, useRef, useCallback, useMemo} from 'react';
-import CallBack from "./hooks/callBack";
-import Memo from "./hooks/memo";
-import MyHooks from "./hooks/myHooks";
+import React from 'react';
+import Counter from "./components/Counter";
 
 
 const App = () => {
     return (
         <div>
-            <MyHooks/>
+            <Counter/>
         </div>
     );
 };
