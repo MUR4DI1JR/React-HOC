@@ -1,7 +1,19 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
+import {
+    incrementCounter,
+    decrementCounter,
+    addCounter,
+    subtractCounter,
+    fetchCounter
+} from "../store/action";
 
 class Counter extends Component {
+
+    componentDidMount() {
+        this.props.fetchCounter();
+    }
+
     render() {
         return (
             <div className="text-center">
@@ -23,10 +35,11 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch =>{
     return {
-        incrementCounter: () => dispatch({type: 'INCREMENT'}),
-        decrementCounter: () => dispatch({type: 'DECREMENT'}),
-        incrementByCounter: () => dispatch({type: 'ADD_COUNTER', value: 5}),
-        decrementByCounter: () => dispatch({type: 'SUBTRACT_COUNTER', value: 5})
+        incrementCounter: () => dispatch(incrementCounter()),
+        decrementCounter: () => dispatch(decrementCounter()),
+        incrementByCounter: () => dispatch(addCounter(5)),
+        decrementByCounter: () => dispatch(subtractCounter(5)),
+        fetchCounter: () => dispatch(fetchCounter()),
     }
 }
 

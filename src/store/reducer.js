@@ -1,29 +1,43 @@
+import {
+    ADD_COUNT,
+    DECREMENT,
+    FETCH_COUNTER_SUCCESS,
+    INCREMENT,
+    SUBTRACT
+} from "./action";
+
 const initialState = {
-    counter: 645,
+    counter: 0,
 }
 
 const reducer = (state = initialState, action) =>{
+    console.log(action);
     switch (action.type) {
-        case "INCREMENT":
+        case INCREMENT:
             return {
                 ...state,
-                counter: state.counter + 1
+                counter: action.count
             };
-        case "DECREMENT":
+        case DECREMENT:
             return {
                 ...state,
-                counter: state.counter - 1
+                counter: action.count
             };
-        case "ADD_COUNTER":
+        case ADD_COUNT:
             return {
                 ...state,
                 counter: state.counter + action.value
             };
-        case "SUBTRACT_COUNTER":
+        case SUBTRACT:
             return {
                 ...state,
                 counter: state.counter - action.value
             };
+        case FETCH_COUNTER_SUCCESS:
+            return {
+                ...state,
+                counter: state.counter = action.value
+            }
         default:
             return state
     }
